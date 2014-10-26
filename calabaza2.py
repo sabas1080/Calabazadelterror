@@ -10,7 +10,7 @@
 # -----------------------
 # Import required Python libraries
 # -----------------------
-import time, subprocess, random, threading, thread
+import time, subprocess, random, thread
 import RPi.GPIO as GPIO
 
 # -----------------------
@@ -49,44 +49,17 @@ def measure_average():
   distance = distance / 3
   return distance
 
-class MyThread (threading.Thread):
-    #def __init__(self,threadID,name,delay, counter):
-    #def blink(delay):
-     def __init__(self):
-        threading.Thread.__init__(self)
-      
-        def run(self):
-          GPIO.output(GPIO_LED, True)
-          time.sleep(0.1)
-          GPIO.output(GPIO_LED, False)
-          time.sleep(0.1)
 
-        #def audio(self):
-         # a=random.randrange(1, 7, 1)
-          #mp3="/home/pi/Calabaza/"+str(a)+".mp3"
-          #print mp3
-          #subprocess.call(["mplayer", mp3], shell=False, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-          #subprocess.call(["mplayer", mp3])
-        
-#class MyThread2 (threading.Thread):
-    #def __init__(self,threadID,name,delay, counter):
-    #def blink(delay):
- #    def __init__(self):
-   #     threading.Thread.__init__(self)
-        
-  #    def run(self):
-    #    a=random.randrange(1, 7, 1)
-     #   mp3="/home/pi/Calabaza/"+str(a)+".mp3"
-        #print mp3
-      #  subprocess.call(["mplayer", mp3], shell=False, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        #subprocess.call(["mplayer", mp3])
+def blink(tiempo): 
+  GPIO.output(GPIO_LED, True)
+  time.sleep(tiempo)
+  GPIO.output(GPIO_LED, False)
+  time.sleep(tiempo)
 
 def audio(numero):
         
   mp3="/home/pi/Calabaza/"+str(numero)+".mp3"
-  #print mp3
   subprocess.call(["mplayer", mp3], shell=False, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-  #subprocess.call(["mplayer", mp3])
 
 # -----------------------
 # Main Script
@@ -125,13 +98,8 @@ try:
       time.sleep(1)
     else:
       a=random.randrange(1, 7, 1)
-      audio(a)
-      thread1=MyThread()
-      #thread2=MyThread2()
-      thread1.start()
-      #thread2.start()
-      #thread1.join()
-      #thread2.join()      
+      thread.start_new_thread(audio,(a,))
+      thread.start_new_thread(blink,(0.1,))      
 
 
 except KeyboardInterrupt:
