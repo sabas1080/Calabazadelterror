@@ -8,5 +8,8 @@ The Inventor's House
 
 /Calabaza: Sonidos para reproducir
 Calabaza.py: Script de control
+Calabaza2: Script para que se ejecute calabaza.py al arrancar las raspberry automaticamente
+
+Instructable: http://www.instructables.com/id/Calabaza-del-Terror-con-Raspberry-Pi/
 
 Sabas 2014
