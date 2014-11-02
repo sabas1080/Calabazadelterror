@@ -10,4 +10,6 @@ The Inventor's House
 Calabaza.py: Script de control
 Calabaza2: Script para que arranque automaticamente al iniciar la raspberry
 
+Instructable: http://www.instructables.com/id/Calabaza-del-Terror-con-Raspberry-Pi/
+
 Sabas 2014
